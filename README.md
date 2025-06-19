@@ -4,16 +4,12 @@ A simple Java utility using [Apache PDFBox](https://pdfbox.apache.org/) to gener
 
 Designed to support testing of document-based integrations by generating realistic dummy attachments.
 
----
-
 ## ✨ Features
 
 - Generate multiple PDFs in one run
 - Custom number of pages per file
 - Fills each page with test content
 - Saves output to `build/generated-pdfs/` (excluded from Git)
-
----
 
 ## 🚀 Usage
 
