@@ -1,0 +1,4 @@
+pdf:
+  count: 1
+  sizeMB: 0.3
+  outputDir: build/generated-pdfs

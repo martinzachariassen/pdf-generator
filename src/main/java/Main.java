@@ -1,19 +1,18 @@
-import java.io.IOException;
 import java.nio.file.Path;
 
 public class Main {
-
   public static void main(String[] args) {
     try {
-      int numberOfPdfs = 2;
-      int pagesPerPdf = 100;
-      Path outputDirectory = Path.of("build/generated-pdfs");
+      PdfConfig config = ConfigLoader.loadConfig();
 
-      PdfGenerator.generateMultiplePdfs(numberOfPdfs, pagesPerPdf, outputDirectory);
+      int numberOfPdfs = config.pdf.count;
+      double targetSizeInMB = config.pdf.sizeMB;
+      Path outputDirectory = config.pdf.getOutputPath();
 
-      System.out.println("PDFs generated successfully!");
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+      PdfGenerator.generateMultiplePdfsOfSize(numberOfPdfs, targetSizeInMB, outputDirectory);
+    } catch (Exception e) {
+      System.err.println("❌ Failed to generate PDFs: " + e.getMessage());
+      throw new RuntimeException("PDF generation failed", e);
     }
   }
 }
